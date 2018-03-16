@@ -1,0 +1,30 @@
+body {
+    background: radial-gradient(ellipse at center, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); 
+}
+
+
+#exr
+{
+	float: left;
+	margin: 30;
+}
+#wgt
+{
+	float: left;
+	margin: 30;
+}
+#rep
+{
+	float:left;
+	margin: 30;
+	clear: right;
+}
+
+#days
+{
+	clear:left;
+}
+#mass #len #btn1
+{
+	margin: 30;
+}

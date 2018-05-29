@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-	<!DOCTYPE html>
-	<html>
-	<head>
-		<title>My fitness records</title>
-		<link rel="stylesheet" type="text/css" href="theme.css">
-	</head>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My fitness records</title>
+	<link rel="stylesheet" type="text/css" href="theme.css">
+</head>
 
-	<body>
-		<div id ="header">
-			<marquee SCROLLAMOUNT="5"><img src="bn.jpg" alt="Bench Press" height="300" width="300" id = "bimg">
-					<img src="sq.jpg" alt="Squat" height="300" width="300" id = "simg">
-					<img src="oh.jpg" alt="OHP" height="300" width="300" id = "oimg">
-					<img src="dl.jpg" alt="Dead Lift" height="300" width="300" id = "dimg">
-					<img src="pl.jpg" alt="Pull ups" height="300" width="300" id = "pimg">
-			</marquee>
-		</div>
-		<h1>Here i will record weights lifted in the gym alongside their date</h1>
-		
-		
+<body>
+	<div id ="header">
+		<marquee SCROLLAMOUNT="5"><img src="bn.jpg" alt="Bench Press" height="300" width="300" id = "bimg">
+			<img src="sq.jpg" alt="Squat" height="300" width="300" id = "simg">
+			<img src="oh.jpg" alt="OHP" height="300" width="300" id = "oimg">
+			<img src="dl.jpg" alt="Dead Lift" height="300" width="300" id = "dimg">
+			<img src="pl.jpg" alt="Pull ups" height="300" width="300" id = "pimg">
+		</marquee>
+	</div>
+	<h1>Here i will record weights lifted in the gym alongside their date</h1>
+
+
 <!--		<ul id="exr">
 			<li>Bench</li>
 			<li>Squat</li>
@@ -52,172 +52,197 @@
 			<li id="rrep">10</li>
 			<li id="trep">10</li>
 		</ul>
-		</br>-->
-		
-		<h2 id="days"></h2>
-		
-		<button onclick="document.getElementById('days').innerHTML='Date: '+Date()" id="btn1">The time is</button>
-		<br><br>
-		<form id="frm">
-			Weight(KG): <h4 id= "mass">66.6</h4>
-			Height(Feet): <h4 id= "len">5.6</h4>
-		</form><br>
-		
-		<h1>Calculating BMI:</h1><br>
-		<button onclick="bmiform()">BMI Formula:</button>
-		<p id="bmifor"></p>
+	</br>-->
 
-		<button onclick="bmi()">Calc. BMI</button>
-		<p id="bmires"></p>
+	<h2 id="days"></h2>
 
-		
-		<h1>Checking my one rep max</h1>
-		<button onclick="showf()">ORM Formula</button>
-		<h2 id="show"></h2><br>
+	<button onclick="document.getElementById('days').innerHTML='Date: '+Date()" id="btn1">The time is</button>
+	<br><br>
+	<form id="frm" method="POST" action="form.php">
+		Mass: <input type="text" name="mass"><br>
+		Lenght: <input type="text" name="len"><br>
+		<input type="submit">
+	</form><br>
 
-		<button onclick="showo()">ORM Calc</button>
-		<p id ="res"></p>
+	<h1>Calculating BMI:</h1><br>
+	<button onclick="bmiform()">BMI Formula:</button>
+	<p id="bmifor"></p>
 
-		<button onclick="showp(60)">60% of ORM</button>
-		<p id ="six"></p>
+	<button onclick="bmi()">Calc. BMI</button>
+	<p id="bmires"></p>
 
-		<button onclick="showp(75)">75% of ORM</button>
-		<p id ="seven"></p>
 
-		<button onclick="showp(90)">90% of ORM</button>
-		<p id ="nine"></p>
+	<h1>Checking my one rep max</h1>
+	<button onclick="showf()">ORM Formula</button>
+	<h2 id="show"></h2><br>
 
-		<button onclick="showp(80)">80% of ORM</button>
-		<p id ="eight"></p>
+	<button onclick="showo()">ORM Calc</button>
+	<p id ="res"></p>
 
-		<script type="text/javascript">
-			function showf(){
-				document.getElementById("show").innerHTML = "The Formula : (4.6RM X 1.1307) + 0.6998.";
-			}
+	<button onclick="showp(60)">60% of ORM</button>
+	<p id ="six"></p>
 
-		</script>
-		<script type="text/javascript">
-			function showo(){
-				var bo = document.getElementById("bwgt").innerText;
-				var so = document.getElementById("swgt").innerText;
-				var rpo = document.getElementById("rpwgt").innerText;
-				var oo = document.getElementById("owgt").innerText;
-				var po = document.getElementById("pwgt").innerText;
-				var co = document.getElementById("cwgt").innerText;
-				var ro = document.getElementById("rwgt").innerText;
-				var to = document.getElementById("twgt").innerText;
-				var outb = Math.round(bo*1.1307+0.6998);
-				var outs = Math.round(so*1.1307+0.6998);
-				var outrp = Math.round(rpo*1.1307+0.6998);
-				var outo = Math.round(oo*1.1307+0.6998);
-				var outp = Math.round(po*1.1307+0.6998);
-				var outc = Math.round(co*1.1307+0.6998);
-				var outr = Math.round(ro*1.1307+0.6998);
-				var outt = Math.round(to*1.1307+0.6998);
-				var resultb = 	"Bench : "+ outb + " KG" + " ";
-				var results =	"Squat : "+ outs + " KG"; + " ";
-				var resultrp =	"Rack Pull : "+ outrp + " KG"; + " ";
-				var resulto =	"OHP : "+ outo + " KG"; + " ";
-				var resultp =	"Pull Ups : "+ outp + " KG"; + " ";
-				var resultc =	"Curls : "+ outc + " KG"; + " ";
-				var resultr =	"Rows : "+ outr + " KG"; + " ";
-				var resultt =	"Tricep Ext. : "+ outt + " KG"; + " ";
-				document.getElementById("res").innerHTML = resultb+ "<br>" +results+ "<br>" +resultrp+ "<br>" +resulto+
-															"<br>" +resultp+"<br>" +resultc+"<br>" +resultr+"<br>" +resultt;
-			}
-		</script>
+	<button onclick="showp(75)">75% of ORM</button>
+	<p id ="seven"></p>
 
-		<script type="text/javascript">
-			function showp(p){
-				var bo = document.getElementById("bwgt").innerText;
-				var so = document.getElementById("swgt").innerText;
-				var rpo = document.getElementById("rpwgt").innerText;
-				var oo = document.getElementById("owgt").innerText;
-				var po = document.getElementById("pwgt").innerText;
-				var co = document.getElementById("cwgt").innerText;
-				var ro = document.getElementById("rwgt").innerText;
-				var to = document.getElementById("twgt").innerText;
-				var outb = Math.round(bo*1.1307+0.6998);
-				var outs = Math.round(so*1.1307+0.6998);
-				var outrp = Math.round(rpo*1.1307+0.6998);
-				var outo = Math.round(oo*1.1307+0.6998);
-				var outp = Math.round(po*1.1307+0.6998);
-				var outc = Math.round(co*1.1307+0.6998);
-				var outr = Math.round(ro*1.1307+0.6998);
-				var outt = Math.round(to*1.1307+0.6998);
-				var resultb = 	"Bench : "+ ((outb*p)/100) + " KG" + " ";
-				var results =	"Squat : "+ ((outs*p)/100) + " KG"; + " ";
-				var resultrp =	"Rack Pull : "+ ((outrp*p)/100) + " KG"; + " ";
-				var resulto =	"OHP : "+ ((outo*p)/100) + " KG"; + " ";
-				var resultp =	"Pull Ups : "+ ((outp*p)/100) + " KG"; + " ";
-				var resultc =	"Curls : "+ ((outc*p)/100) + " KG"; + " ";
-				var resultr =	"Rows : "+ ((outr*p)/100) + " KG"; + " ";
-				var resultt =	"Tricep Ext. : "+ ((outt*p)/100) + " KG"; + " ";
+	<button onclick="showp(90)">90% of ORM</button>
+	<p id ="nine"></p>
 
-				var percent = [];
-				percent.push(resultb,results,resultrp,resulto,resultp,resultc,resultr,resultt);
+	<button onclick="showp(80)">80% of ORM</button>
+	<p id ="eight"></p>
 
-				if(p==60)
-				{
-					document.getElementById("six").innerHTML = percent;
-				}
-				else if(p==75)
-				{
-					document.getElementById("seven").innerHTML = percent;
-				}
-				else if(p==80)
-				{
-					document.getElementById("eight").innerHTML = percent;
-				}
-				else
-				{
-					document.getElementById("nine").innerHTML = percent;
-				}
-			}
-		</script>
-
-		<script type="text/javascript">
-			function bmi(m,l){
-				var m = document.getElementById("mass").innerText;
-				var l = document.getElementById("len").innerText;
-				var b = m/((l/3.28)^2);
-				document.getElementById("bmires").innerHTML = b + "%";
-
-			}
-		</script>
-		<script type="text/javascript">
-			function bmiform(){
-				document.getElementById("bmifor").innerHTML = "BMI = kg/m2";
-			}
-		</script>
-		<br><br>
-		<?php
-
-		$dbhost = 'localhost:3306';
-	    $dbuser = 'root';
-	    $dbpass = '';
-	    $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
-	   
-	    if(! $conn ) {
-	       echo "Could not connect. mysql_error()";
-	    }
-	    $t=time();
-	    $times = date("Y-m-d",$t);
-	    mysqli_select_db($conn,"Fitness");
-	    $sql = "SELECT * FROM weights";
-	   	$retval = mysqli_query($conn,"SELECT * FROM weights");
-	   	while ($res = mysqli_fetch_array($retval, MYSQLI_ASSOC)) {
-	    echo "<br>Squat :{$res['Squat']}kg <br> ".
-         "Bench : {$res['Bench']}kg <br> ".
-         "OHP : {$res['OHP']}kg <br> ".
-         "Deadlift : {$res['Deadlift']}kg <br> ".
-         "Pullups : {$res['PullUps']}kg <br> ".
-         "Curls : {$res['Curls']}kg <br> ".
-         "Rows : {$res['Rows']}kg <br> ".
-         "TricepExt : {$res['TricepExt']}kg <br> ".
-         "At {$times} time<br>".
-         "--------------------------------<br>";
+	<script type="text/javascript">
+		function showf(){
+			document.getElementById("show").innerHTML = "The Formula : (4.6RM X 1.1307) + 0.6998.";
 		}
-	   ?>
-	</body>
-	</html>
+
+	</script>
+	<script type="text/javascript">
+		function showo(){
+			var bo = document.getElementById("bwgt").innerText;
+			var so = document.getElementById("swgt").innerText;
+			var rpo = document.getElementById("rpwgt").innerText;
+			var oo = document.getElementById("owgt").innerText;
+			var po = document.getElementById("pwgt").innerText;
+			var co = document.getElementById("cwgt").innerText;
+			var ro = document.getElementById("rwgt").innerText;
+			var to = document.getElementById("twgt").innerText;
+			var outb = Math.round(bo*1.1307+0.6998);
+			var outs = Math.round(so*1.1307+0.6998);
+			var outrp = Math.round(rpo*1.1307+0.6998);
+			var outo = Math.round(oo*1.1307+0.6998);
+			var outp = Math.round(po*1.1307+0.6998);
+			var outc = Math.round(co*1.1307+0.6998);
+			var outr = Math.round(ro*1.1307+0.6998);
+			var outt = Math.round(to*1.1307+0.6998);
+			var resultb = 	"Bench : "+ outb + " KG" + " ";
+			var results =	"Squat : "+ outs + " KG"; + " ";
+			var resultrp =	"Rack Pull : "+ outrp + " KG"; + " ";
+			var resulto =	"OHP : "+ outo + " KG"; + " ";
+			var resultp =	"Pull Ups : "+ outp + " KG"; + " ";
+			var resultc =	"Curls : "+ outc + " KG"; + " ";
+			var resultr =	"Rows : "+ outr + " KG"; + " ";
+			var resultt =	"Tricep Ext. : "+ outt + " KG"; + " ";
+			document.getElementById("res").innerHTML = resultb+ "<br>" +results+ "<br>" +resultrp+ "<br>" +resulto+
+			"<br>" +resultp+"<br>" +resultc+"<br>" +resultr+"<br>" +resultt;
+		}
+	</script>
+
+	<script type="text/javascript">
+		function showp(p){
+			var bo = document.getElementById("bwgt").innerText;
+			var so = document.getElementById("swgt").innerText;
+			var rpo = document.getElementById("rpwgt").innerText;
+			var oo = document.getElementById("owgt").innerText;
+			var po = document.getElementById("pwgt").innerText;
+			var co = document.getElementById("cwgt").innerText;
+			var ro = document.getElementById("rwgt").innerText;
+			var to = document.getElementById("twgt").innerText;
+			var outb = Math.round(bo*1.1307+0.6998);
+			var outs = Math.round(so*1.1307+0.6998);
+			var outrp = Math.round(rpo*1.1307+0.6998);
+			var outo = Math.round(oo*1.1307+0.6998);
+			var outp = Math.round(po*1.1307+0.6998);
+			var outc = Math.round(co*1.1307+0.6998);
+			var outr = Math.round(ro*1.1307+0.6998);
+			var outt = Math.round(to*1.1307+0.6998);
+			var resultb = 	"Bench : "+ ((outb*p)/100) + " KG" + " ";
+			var results =	"Squat : "+ ((outs*p)/100) + " KG"; + " ";
+			var resultrp =	"Rack Pull : "+ ((outrp*p)/100) + " KG"; + " ";
+			var resulto =	"OHP : "+ ((outo*p)/100) + " KG"; + " ";
+			var resultp =	"Pull Ups : "+ ((outp*p)/100) + " KG"; + " ";
+			var resultc =	"Curls : "+ ((outc*p)/100) + " KG"; + " ";
+			var resultr =	"Rows : "+ ((outr*p)/100) + " KG"; + " ";
+			var resultt =	"Tricep Ext. : "+ ((outt*p)/100) + " KG"; + " ";
+
+			var percent = [];
+			percent.push(resultb,results,resultrp,resulto,resultp,resultc,resultr,resultt);
+
+			if(p==60)
+			{
+				document.getElementById("six").innerHTML = percent;
+			}
+			else if(p==75)
+			{
+				document.getElementById("seven").innerHTML = percent;
+			}
+			else if(p==80)
+			{
+				document.getElementById("eight").innerHTML = percent;
+			}
+			else
+			{
+				document.getElementById("nine").innerHTML = percent;
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		function bmi(m,l){
+			var m = document.getElementById("mass").innerText;
+			var l = document.getElementById("len").innerText;
+			var b = m/((l/3.28)^2);
+			document.getElementById("bmires").innerHTML = b + "%";
+
+		}
+	</script>
+	<script type="text/javascript">
+		function bmiform(){
+			document.getElementById("bmifor").innerHTML = "BMI = kg/m2";
+		}
+	</script>
+	<br><br>
+	<?php
+
+	$dbhost = 'localhost:3306';
+	$dbuser = 'root';
+	$dbpass = '';
+	$conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+
+	if(! $conn ) {
+		echo "Could not connect. mysql_error()";
+	}
+	$t=time();
+	$times = date("Y-m-d",$t);
+	mysqli_select_db($conn,"Fitness");
+	$sql = "SELECT * FROM weights";
+	$retval = mysqli_query($conn,"SELECT * FROM weights");
+	while ($res = mysqli_fetch_array($retval, MYSQLI_ASSOC)) {
+		echo "<br>Squat :{$res['Squat']}kg <br> ".
+		"Bench : {$res['Bench']}kg <br> ".
+		"OHP : {$res['OHP']}kg <br> ".
+		"Deadlift : {$res['Deadlift']}kg <br> ".
+		"Pullups : {$res['PullUps']}kg <br> ".
+		"Curls : {$res['Curls']}kg <br> ".
+		"Rows : {$res['Rows']}kg <br> ".
+		"TricepExt : {$res['TricepExt']}kg <br> ".
+		"At {$times} time<br>".
+		"--------------------------------<br>";
+	}
+	?>
+	<!--<?php
+	if (isset($_POST["mass"]))
+	{
+		$Mass = $_POST["mass"];
+		echo "Weight: ".$Mass."KG";
+	} 
+	else 
+	{
+		$Mass = null;
+		echo "Nothing supplied";
+	}
+
+	if (isset($_POST["len"]))
+	{
+		$Length = $_POST["len"];
+		echo "Height: ".$Length."Feet";
+	} 
+	else 
+	{
+		$Length = null;
+		echo "Nothing supplied";
+	}
+	?>-->
+
+</body>
+</html>
